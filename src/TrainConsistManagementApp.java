@@ -1,14 +1,13 @@
-import java.util.TreeSet;
-
+import java.util.LinkedHashSet;
+import java.util.Set;
 public class TrainConsistManagementApp {
     public static void main(String[] args) {
-        TreeSet<String> bogieIds = new TreeSet<>();
-        bogieIds.add("Engine");
-        bogieIds.add("Sleeper");
-        bogieIds.add("AC");
-        bogieIds.add("Cargo");
-        bogieIds.add("Guard");
+        Set<String> bogies = new LinkedHashSet<>();
+        bogies.add("Engine");
+        bogies.add("Sleeper");
+        bogies.add("Cargo");
+        bogies.add("Guard");
+        bogies.add("Sleeper"); // duplicate ignored
 
-        System.out.println("Ordered Bogie IDs: " + bogieIds);
-    }
+        System.out.println("Train Formation: " + bogies);}
 }
