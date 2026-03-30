@@ -1,8 +1,10 @@
 import java.util.stream.Collectors;
-
+import java.util.TreeSet;
+import java.util.*;
 public class TrainConsistManagementApp {
     public static void main(String[] args) {
-        Map<String, List<Bogie>> grouped = bogies.stream()
-                .collect(Collectors.groupingBy(b -> b.name));
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
 
-        System.out.println("Grouped Bogies: " + grouped);}}
+        System.out.println("Total Seating Capacity: " + totalSeats);}}
