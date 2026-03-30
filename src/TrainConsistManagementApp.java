@@ -1,13 +1,14 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.TreeSet;
 
 public class TrainConsistManagementApp {
     public static void main(String[] args) {
-        Set<String> bogieIds = new HashSet<>();
-        bogieIds.add("BG101");
-        bogieIds.add("BG102");
-        bogieIds.add("BG101"); // duplicate ignored
+        TreeSet<String> bogieIds = new TreeSet<>();
+        bogieIds.add("Engine");
+        bogieIds.add("Sleeper");
+        bogieIds.add("AC");
+        bogieIds.add("Cargo");
+        bogieIds.add("Guard");
 
-        System.out.println("Unique Bogie IDs: " + bogieIds);
+        System.out.println("Ordered Bogie IDs: " + bogieIds);
     }
 }
