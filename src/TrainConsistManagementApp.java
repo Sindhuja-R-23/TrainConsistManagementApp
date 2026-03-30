@@ -1,21 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TrainConsistManagementApp {
     public static void main(String[] args) {
-        // inside main()
-        List<String> bogies = new ArrayList<>();
-        bogies.add("Sleeper");
-        bogies.add("AC Chair");
-        bogies.add("First Class");
+        Set<String> bogieIds = new HashSet<>();
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG101"); // duplicate ignored
 
-        System.out.println("Bogies after insertion: " + bogies);
-
-        bogies.remove("AC Chair");
-        System.out.println("After removal: " + bogies);
-
-        System.out.println("Contains Sleeper? " + bogies.contains("Sleeper"));
-
-
+        System.out.println("Unique Bogie IDs: " + bogieIds);
     }
 }
