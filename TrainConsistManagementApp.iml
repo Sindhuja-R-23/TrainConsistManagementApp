@@ -9,7 +9,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> feature/UC9
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5">
         <CLASSES>
@@ -26,6 +29,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+<<<<<<< HEAD
 >>>>>>> feature/UC8
+=======
+>>>>>>> feature/UC9
   </component>
 </module>
