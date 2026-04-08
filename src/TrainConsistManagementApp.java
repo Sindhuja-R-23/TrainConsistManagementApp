@@ -1,49 +1,54 @@
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+import java.util.*;
+import java.util.stream.*;
+
+class Bogie {
+    int capacity;
+
+    Bogie(int capacity) {
+        this.capacity = capacity;
+    }
+}
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("====================================");
-        System.out.println("UC11 - Validate Train ID & Cargo Code");
+        System.out.println("UC13 - Performance Comparison");
         System.out.println("====================================\n");
 
-        Scanner sc = new Scanner(System.in);
+        List<Bogie> bogies = new ArrayList<>();
 
-        // INPUT
-        System.out.print("Enter Train ID: ");
-        String trainId = sc.nextLine();
-
-        System.out.print("Enter Cargo Code: ");
-        String cargoCode = sc.nextLine();
-
-        // REGEX PATTERNS
-        String trainRegex = "TRN-\\d{4}";
-        String cargoRegex = "PET-[A-Z]{2}";
-
-        // COMPILE
-        Pattern trainPattern = Pattern.compile(trainRegex);
-        Pattern cargoPattern = Pattern.compile(cargoRegex);
-
-        // MATCH
-        Matcher trainMatcher = trainPattern.matcher(trainId);
-        Matcher cargoMatcher = cargoPattern.matcher(cargoCode);
-
-        // VALIDATION RESULT
-        if (trainMatcher.matches()) {
-            System.out.println("\nTrain ID is VALID");
-        } else {
-            System.out.println("\nTrain ID is INVALID");
+        // Create sample data
+        for (int i = 0; i < 1000; i++) {
+            bogies.add(new Bogie((int)(Math.random() * 100)));
         }
 
-        if (cargoMatcher.matches()) {
-            System.out.println("Cargo Code is VALID");
-        } else {
-            System.out.println("Cargo Code is INVALID");
+        // LOOP METHOD
+        long startLoop = System.nanoTime();
+
+        List<Bogie> loopResult = new ArrayList<>();
+        for (Bogie b : bogies) {
+            if (b.capacity > 60) {
+                loopResult.add(b);
+            }
         }
 
-        System.out.println("\nUC11 validation completed...");
+        long endLoop = System.nanoTime();
+
+        // STREAM METHOD
+        long startStream = System.nanoTime();
+
+        List<Bogie> streamResult = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+        long endStream = System.nanoTime();
+
+        // OUTPUT
+        System.out.println("Loop Time: " + (endLoop - startLoop) + " ns");
+        System.out.println("Stream Time: " + (endStream - startStream) + " ns");
+
+        System.out.println("\nUC13 performance comparison completed...");
     }
 }
